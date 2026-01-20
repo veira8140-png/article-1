@@ -1,3 +1,12 @@
+#!/bin/bash
+# One-command modern article setup for GitHub Pages
+# Requires: GitHub CLI login already done (gh auth login)
+
+# Create folders
+mkdir -p assets/css
+
+# Create index.html with modern VeiraHQ-style look
+cat > index.html <<'EOL'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,3 +61,16 @@ function toggleDarkMode(){const body=document.body;body.setAttribute('data-theme
 </script>
 </body>
 </html>
+EOL
+
+# Create minimal CSS folder (can expand later)
+touch assets/css/style.css
+
+# Stage and commit
+git add .
+git commit -m "Modernized article with VeiraHQ-style design, dark mode, and CTA"
+
+# Push using GitHub CLI login
+git push origin main
+
+echo "✅ Modern website updated and pushed! Check your GitHub Pages URL."
