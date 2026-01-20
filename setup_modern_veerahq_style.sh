@@ -1,3 +1,12 @@
+#!/bin/bash
+
+# One command to build a modern SaaS‑style article page
+
+# Create CSS directory
+mkdir -p assets/css
+
+# Create index.html
+cat > index.html << 'EOL'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,3 +79,47 @@
 
 </body>
 </html>
+EOL
+
+# Create CSS
+cat > assets/css/style.css << 'EOL'
+/* Base Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; color: #333; background: #fff; line-height: 1.7; }
+
+header.hero {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+header.hero h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 15px;}
+header.hero p { font-size: 1.2rem; margin-bottom: 20px;}
+.btn { display: inline-block; padding: 14px 28px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+.btn-primary { background: #ff6600; color: white; }
+.btn-primary:hover { background: #e65c00; }
+.btn-secondary { background: #1e40af; color: white; margin-top: 20px; }
+.btn-secondary:hover { background: #1e3a8a; }
+
+.container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+.section-intro p { font-size: 1.2rem; margin-bottom: 25px; }
+.tip { margin-bottom: 30px; }
+.tip h2 { font-size: 1.8rem; color: #1d4ed8; margin-bottom: 10px; }
+.tip p { font-size: 1.1rem; }
+
+.cta-section {
+  background: #eef2ff;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+.footer { text-align: center; padding: 20px 0; font-size: 0.9rem; color: #555; margin-top: 40px; }
+EOL
+
+# Commit and push
+git add .
+git commit -m "Modern SaaS‑style article layout"
+git push origin main
+
+echo "Modern layout applied and pushed. Check your GitHub Pages URL."
